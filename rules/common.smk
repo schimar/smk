@@ -7,7 +7,7 @@ os.environ["NUMEXPR_MAX_THREADS"]="272"
 import pandas as pd
 from glob import glob
 import shutil 
-import allel as al
+import sgkit as sg
 import numpy as np
 import scipy.spatial
 ##%matplotlib
@@ -26,17 +26,17 @@ configfile:
   "config/config.yaml"
 
 # load sample info 
-samples24 = pd.read_csv(config['samplesSub'], sep='\t', index_col=False)
-
-sample_names = list(samples24['sample'])
-sample_locations = list(samples24['location'])
-samples_set = zip(sample_names, sample_locations)
-samples_dict = dict(zip(sample_names, sample_locations))
-
-# load sample info for all ant samples (the 85 + 24 = 109) 
-ids = pd.read_table(config['ids'], sep='\t', index_col=False)
-ids['id_nest'] = ids['id'] + '_' + ids['nest']
-iddict = ids[['sample', 'id_nest']].set_index('sample').T.to_dict('list')
+#samples24 = pd.read_csv(config['samplesSub'], sep='\t', index_col=False)
+#
+#sample_names = list(samples24['sample'])
+#sample_locations = list(samples24['location'])
+#samples_set = zip(sample_names, sample_locations)
+#samples_dict = dict(zip(sample_names, sample_locations))
+#
+## load sample info for all ant samples (the 85 + 24 = 109) 
+#ids = pd.read_table(config['ids'], sep='\t', index_col=False)
+#ids['id_nest'] = ids['id'] + '_' + ids['nest']
+#iddict = ids[['sample', 'id_nest']].set_index('sample').T.to_dict('list')
 
 
 
